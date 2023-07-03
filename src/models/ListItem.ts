@@ -3,7 +3,8 @@ export interface Item {
     title: string;
     yearOfRelease: string;
     posterURL: string;
-    description: string
+    description: string;
+    active: boolean;
 }
 
 export default class ListItem implements Item {
@@ -13,6 +14,7 @@ export default class ListItem implements Item {
         private _yearOfRelease: string = "",
         private _posterURL: string = "",
         private _description: string = "",
+        private _active: boolean = false,
     ) {}
 
     get id(): number {
@@ -53,6 +55,14 @@ export default class ListItem implements Item {
     
       set description(description: string) {
         this._description = description;
+      }
+
+      get active(): boolean {
+        return this._active;
+      }
+    
+      set active(active: boolean) {
+        this._active = active;
       }
       
 
