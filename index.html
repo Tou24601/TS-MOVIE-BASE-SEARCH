@@ -13,15 +13,12 @@
     <main>
       <form class="row d-flex flex-row" id="entryForm">
       <div class="mb-3 col-6">
-        <label for="searchInput" class="form-label d-none">Movie Title</label>
+        <label for="entryInput" class="form-label d-none">Movie Title</label>
         <input type="text" class="form-control" id="entryInput" placeholder="Title">
       </div>
       <div class="col-3">
-      <select class="form-select" aria-label="Default select example" id="selectTypeOfSearch">
-        <option selected>Open this select menu</option>
-        <option value="1">Title</option>
-        <option value="2">Year of Release</option>
-      </select>
+        <label for="yearInput" class="form-label d-none">Movie Title</label>
+        <input type="number" class="form-control" id="yearInput" placeholder="Year of Release (Optional)">
     </div>
       
         <button type="submit" class="col-3 btn btn-primary mb-3">Search</button>
