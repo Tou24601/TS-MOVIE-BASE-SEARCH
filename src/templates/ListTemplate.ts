@@ -12,7 +12,7 @@ export default class ListTemplate implements DOMList {
   static instance: ListTemplate = new ListTemplate();
 
   private constructor() {
-    this.ul = document.getElementById("listItems") as HTMLUListElement;
+    this.ul = document.getElementById("moviesList") as HTMLUListElement;
   }
 
   clear(): void {
@@ -24,8 +24,7 @@ export default class ListTemplate implements DOMList {
 
     fullList.list.map((item) => {
       const li = document.createElement("li") as HTMLLIElement;
-      li.className = "item";
-      //li.id = item.id
+      li.className = "listItem";
       if (item.active !== true) {
         li.className = "notActivated";
       }

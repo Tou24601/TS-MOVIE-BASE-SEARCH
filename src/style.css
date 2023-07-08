@@ -2,6 +2,11 @@ body {
   text-align: center;
 }
 
+.listItem {
+  width: auto;
+  height: auto;
+}
+
 .notActivated .yearOfRelease, .notActivated .description {
   display: none
 }

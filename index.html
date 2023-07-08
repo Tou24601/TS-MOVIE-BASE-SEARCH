@@ -11,13 +11,13 @@
       <h1>Search for Your New Favourite Movie!</h1>
     </header>
     <main>
-      <form class="row d-flex flex-row">
+      <form class="row d-flex flex-row" id="entryForm">
       <div class="mb-3 col-6">
         <label for="searchInput" class="form-label d-none">Movie Title</label>
-        <input type="text" class="form-control" id="searchInput" placeholder="Title">
+        <input type="text" class="form-control" id="entryInput" placeholder="Title">
       </div>
       <div class="col-3">
-      <select class="form-select" aria-label="Default select example">
+      <select class="form-select" aria-label="Default select example" id="selectTypeOfSearch">
         <option selected>Open this select menu</option>
         <option value="1">Title</option>
         <option value="2">Year of Release</option>
@@ -27,13 +27,12 @@
         <button type="submit" class="col-3 btn btn-primary mb-3">Search</button>
       
     </form>
-    <div class="row d-flex flex-row">
+    <!--<div class="row d-flex flex-row">
       <p class="col-4 fw-bold fs-5">Title</p>
       <p class="col-4 fw-bold fs-5">Year of Release</p>
       <p class="col-4 fw-bold fs-5">Rating</p>
-    </div>
-      <ul class="list-group d-flex flex-row gap-3 listItems">
-        <li class="list-group-item col-2" id="listitem">An item</li>
+    </div>-->
+      <ul class="list-group d-flex flex-row gap-3 listItems" id="moviesList">
         <!--<li class="list-group-item col-2">An item</li>
         <li class="list-group-item col-2">A second item</li>
         <li class="list-group-item col-2">A third item</li>
