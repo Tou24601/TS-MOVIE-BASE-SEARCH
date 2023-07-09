@@ -1,5 +1,5 @@
 export interface Item {
-    id: number;
+    id: string;
     title: string;
     yearOfRelease: string;
     posterURL: string;
@@ -9,7 +9,7 @@ export interface Item {
 
 export default class ListItem implements Item {
     constructor(
-        private _id: number,
+        private _id: string,
         private _title: string = "",
         private _yearOfRelease: string = "",
         private _posterURL: string = "",
@@ -17,11 +17,11 @@ export default class ListItem implements Item {
         private _active: boolean = false,
     ) {}
 
-    get id(): number {
+    get id(): string {
         return this._id;
       }
     
-      set id(id: number) {
+      set id(id: string) {
         this._id = id;
       }
 

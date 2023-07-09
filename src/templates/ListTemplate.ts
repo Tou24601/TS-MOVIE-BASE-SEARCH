@@ -28,25 +28,43 @@ export default class ListTemplate implements DOMList {
       if (item.active !== true) {
         li.className = "notActivated";
       }
+//add event listener
+      li.addEventListener("click", () => {
+        item.active = !item.active
+        if (item.active === true) {
+            li.classList.replace("notActivated", "activated");
+          } else {
+            li.classList.replace("activated", "notActivated");
+          }
+        fullList.saveList()
+        console.log(li.classList)
+    })
+
+    const posterTitleHolder = document.createElement("div")
 
       const poster = document.createElement("img") as HTMLImageElement;
-      poster.setAttribute("src", item.title);
-      li.appendChild(poster);
+      poster.setAttribute("src", item.posterURL);
+      poster.className = "poster";
+      posterTitleHolder.appendChild(poster);
 
-      const title = document.createElement("h3") as HTMLHeadElement;
+      const title = document.createElement("p") as HTMLParagraphElement;
       title.innerText = item.title;
-      li.appendChild(title);
+      posterTitleHolder.appendChild(title);
 
-      const yearOfRelease = document.createElement("p") as HTMLHeadElement;
-      title.innerText = item.yearOfRelease;
+      const descriptionYearHolder = document.createElement("div")
+
+      const yearOfRelease = document.createElement("p") as HTMLParagraphElement;
+      yearOfRelease.innerText = item.yearOfRelease;
       yearOfRelease.className = "yearOfRelease";
-      li.appendChild(yearOfRelease);
+      descriptionYearHolder.appendChild(yearOfRelease);
 
       const description = document.createElement("p") as HTMLHeadElement;
       description.className = "description";
       description.innerText = item.description;
-      li.appendChild(description);
+      descriptionYearHolder.appendChild(description);
 
+      li.appendChild(posterTitleHolder)
+      li.appendChild(descriptionYearHolder)
       this.ul.appendChild(li);
     });
   }

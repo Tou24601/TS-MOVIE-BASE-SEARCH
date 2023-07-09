@@ -23,7 +23,7 @@ export default class FullList implements List {
     if (typeof storedList !== "string") return;
 
     const parsedList: {
-      _id: number;
+      _id: string;
       _title: string;
       _yearOfRelease: string;
       _posterURL: string;

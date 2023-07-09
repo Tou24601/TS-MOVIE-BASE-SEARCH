@@ -2,11 +2,27 @@ body {
   text-align: center;
 }
 
-.listItem {
-  width: auto;
-  height: auto;
+ul {
+  list-style-type: none;
 }
 
-.notActivated .yearOfRelease, .notActivated .description {
+li {
+  width: 20vw;
+  height: 60vh;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+}
+
+.notActivated .yearOfRelease, .notActivated .description, h2.notActivated {
   display: none
+}
+
+.activated {
+  display: initial;
+  z-index: 1;
+}
+
+.poster {
+  height: 50vh;
 }
