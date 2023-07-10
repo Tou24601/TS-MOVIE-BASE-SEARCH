@@ -24,26 +24,27 @@ export default class ListTemplate implements DOMList {
 
     fullList.list.map((item) => {
       const li = document.createElement("li") as HTMLLIElement;
-      li.className = "listItem";
+      li.classList.add("listItem");
       if (item.active !== true) {
         li.className = "notActivated";
       }
-//add event listener
-      li.addEventListener("click", () => {
-        item.active = !item.active
-        if (item.active === true) {
-            li.classList.replace("notActivated", "activated");
-          } else {
-            li.classList.replace("activated", "notActivated");
-          }
-        fullList.saveList()
-        console.log(li.classList)
-    })
 
-    const posterTitleHolder = document.createElement("div")
+      li.addEventListener("click", () => {
+        item.active = !item.active;
+        if (item.active === true) {
+          li.classList.replace("notActivated", "activated");
+        } else {
+          li.classList.replace("activated", "notActivated");
+        }
+        fullList.saveList();
+      });
+
+      const posterTitleHolder = document.createElement("div");
+      posterTitleHolder.className = "posterTitleHolder";
 
       const poster = document.createElement("img") as HTMLImageElement;
       poster.setAttribute("src", item.posterURL);
+      poster.setAttribute("alt", "MOVIE POSTER NOT AVAILABLE");
       poster.className = "poster";
       posterTitleHolder.appendChild(poster);
 
@@ -51,20 +52,21 @@ export default class ListTemplate implements DOMList {
       title.innerText = item.title;
       posterTitleHolder.appendChild(title);
 
-      const descriptionYearHolder = document.createElement("div")
+      const descriptionYearHolder = document.createElement("div");
+      descriptionYearHolder.className = "descriptionYearHolder";
 
-      const yearOfRelease = document.createElement("p") as HTMLParagraphElement;
-      yearOfRelease.innerText = item.yearOfRelease;
+      const yearOfRelease = document.createElement("h5") as HTMLHeadingElement;
+      yearOfRelease.innerText = `${item.title} (${item.yearOfRelease})`;
       yearOfRelease.className = "yearOfRelease";
       descriptionYearHolder.appendChild(yearOfRelease);
 
-      const description = document.createElement("p") as HTMLHeadElement;
-      description.className = "description";
+      const description = document.createElement("p") as HTMLParagraphElement;
+      description.classList.add("description", "text-start", "ms-2");
       description.innerText = item.description;
       descriptionYearHolder.appendChild(description);
 
-      li.appendChild(posterTitleHolder)
-      li.appendChild(descriptionYearHolder)
+      li.appendChild(posterTitleHolder);
+      li.appendChild(descriptionYearHolder);
       this.ul.appendChild(li);
     });
   }

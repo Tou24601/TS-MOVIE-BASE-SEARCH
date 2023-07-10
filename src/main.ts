@@ -38,7 +38,7 @@ const initApp = (): void => {
         year = Number(newYearEntry);
         url = `https://api.themoviedb.org/3/search/movie?query=${movie}&include_adult=false&language=en-US&primary_release_year=${year}&fbclid=IwAR3ocwlIGvQtZ2hKU5y7bgOz2r5raO3Hj4Z-_uZ7IJkFq465l-NZLxTOFjM`;
       }
-      fullList.clearList()
+      fullList.clearList();
       const options = {
         method: "GET",
         headers: {
@@ -51,7 +51,6 @@ const initApp = (): void => {
       fetch(url, options)
         .then((response) => response.json())
         .then((response) => {
-          console.log(response);
           if (!response.results.length) {
             noResultsAlert.className = "activated";
           } else {

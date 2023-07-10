@@ -39,8 +39,8 @@ export default class FullList implements List {
         item._posterURL,
         item._description,
         item._active
-      )
-      FullList.instance.addItem(newListItem)
+      );
+      FullList.instance.addItem(newListItem);
     });
   }
 
@@ -54,7 +54,7 @@ export default class FullList implements List {
   }
 
   addItem(item: ListItem): void {
-      this._list.push(item)
-      this.saveList()
+    this._list.push(item);
+    this.saveList();
   }
 }
