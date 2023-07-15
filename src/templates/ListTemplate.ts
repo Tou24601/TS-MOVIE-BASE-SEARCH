@@ -25,6 +25,7 @@ export default class ListTemplate implements DOMList {
     fullList.list.map((item) => {
       const li = document.createElement("li") as HTMLLIElement;
       li.classList.add("listItem");
+      li.classList.add("col-3");
       if (item.active !== true) {
         li.className = "notActivated";
       }
