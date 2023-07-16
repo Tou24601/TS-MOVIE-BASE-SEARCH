@@ -60,6 +60,8 @@ const initApp = (): void => {
                 ? parseInt(fullList.list[fullList.list.length - 1].id) + 1
                 : 1;
 
+
+
               if (result.poster_path === null) {
                 resultPosterUrl = IMG;
               } else {
