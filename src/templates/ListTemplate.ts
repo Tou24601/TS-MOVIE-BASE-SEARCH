@@ -25,6 +25,7 @@ export default class ListTemplate implements DOMList {
     fullList.list.map((item) => {
       const li = document.createElement("li") as HTMLLIElement;
       li.classList.add("listItem");
+      li.setAttribute("id", item.id);
       if (item.active !== true) {
         li.className = "notActivated";
       }
@@ -42,26 +43,30 @@ export default class ListTemplate implements DOMList {
       posterTitleHolder.appendChild(title);
 
       li.addEventListener("click", () => {
-
-        fullList.list.map((item) => {
-          if (item.active === true) {
-            item.active = false
-            console.log("it is open")
+        fullList.list.map((element) => {
+          if (item.id !== element.id && element.active === true) {
+            element.active = false;
+            const otherLI = document.getElementById(
+              element.id
+            ) as HTMLLIElement;
+            otherLI.classList.replace("activated", "notActivated");
             fullList.saveList();
-            console.log(fullList)
           }
-        })
+        });
+
         item.active = !item.active;
         if (item.active === true) {
+          li.classList.replace("notActivated", "activated");
           const activatedLi = document.createElement("div") as HTMLDivElement;
           activatedLi.setAttribute("id", "activatedLi");
           if (Number(item.id) % 4 === 0) {
-            activatedLi.classList.add("endOfARow")
-            console.log("end of a row")
+            activatedLi.classList.add("endOfARow");
           }
-          console.log(Number(item.id))
+
+          const activatedPoster = poster.cloneNode(true);
+
           const descriptionYearHolder = document.createElement("div");
-          descriptionYearHolder.className = "descriptionYearHolder";
+          descriptionYearHolder.classList.add("descriptionYearHolder");
 
           const yearOfRelease = document.createElement(
             "h5"
@@ -77,47 +82,19 @@ export default class ListTemplate implements DOMList {
           description.innerText = item.description;
           descriptionYearHolder.appendChild(description);
 
-          activatedLi.appendChild(poster);
+          activatedLi.appendChild(activatedPoster);
           activatedLi.appendChild(descriptionYearHolder);
 
           li.appendChild(activatedLi);
-          //li.classList.replace("notActivated", "activated");
         } else {
-          //li.classList.replace("activated", "notActivated");
-          
+          li.classList.replace("activated", "notActivated");
         }
 
         fullList.saveList();
       });
 
-      /*      const posterTitleHolder = document.createElement("div");
-      posterTitleHolder.className = "posterTitleHolder";
-
-      const poster = document.createElement("img") as HTMLImageElement;
-      poster.setAttribute("src", item.posterURL);
-      poster.setAttribute("alt", "MOVIE POSTER NOT AVAILABLE");
-      poster.className = "poster";
-      posterTitleHolder.appendChild(poster);
-
-      const title = document.createElement("p") as HTMLParagraphElement;
-      title.innerText = item.title;
-      posterTitleHolder.appendChild(title);*/
-
-      /*  const descriptionYearHolder = document.createElement("div");
-      descriptionYearHolder.className = "descriptionYearHolder";
-
-      const yearOfRelease = document.createElement("h5") as HTMLHeadingElement;
-      yearOfRelease.innerText = `${item.title} (${item.yearOfRelease})`;
-      yearOfRelease.className = "yearOfRelease";
-      descriptionYearHolder.appendChild(yearOfRelease);
-
-      const description = document.createElement("p") as HTMLParagraphElement;
-      description.classList.add("description", "text-start", "ms-2");
-      description.innerText = item.description;
-      descriptionYearHolder.appendChild(description);*/
-
       li.appendChild(posterTitleHolder);
-      // li.appendChild(descriptionYearHolder);
+
       this.ul.appendChild(li);
     });
   }
