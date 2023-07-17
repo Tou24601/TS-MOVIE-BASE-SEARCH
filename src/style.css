@@ -7,7 +7,7 @@ ul {
 }
 
 li {
-  width: 20vw;
+  /*width: 20vw;*/
   height: auto;
   margin-bottom: 10px;
   cursor: pointer;
@@ -23,7 +23,7 @@ li {
 }
 
 #activatedLi {
-  width: 40vw;
+  width: auto;
   position: absolute;
   top: 0px;
   box-shadow: 0px 0px 18px 7px rgba(134, 183, 254, 1);
@@ -37,6 +37,7 @@ li {
 }
 
 .descriptionYearHolder {
+  width: 30vw;
   margin-left: 10px;
 }
 

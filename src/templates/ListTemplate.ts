@@ -25,9 +25,12 @@ export default class ListTemplate implements DOMList {
     fullList.list.map((item) => {
       const li = document.createElement("li") as HTMLLIElement;
       li.classList.add("listItem");
+      li.classList.add("col-12");
+      li.classList.add("col-lg-4");
+      li.classList.add("col-xl-3");
       li.setAttribute("id", item.id);
       if (item.active !== true) {
-        li.className = "notActivated";
+        li.classList.add ("notActivated");
       }
       const posterTitleHolder = document.createElement("div");
       posterTitleHolder.className = "posterTitleHolder";
@@ -59,7 +62,9 @@ export default class ListTemplate implements DOMList {
           li.classList.replace("notActivated", "activated");
           const activatedLi = document.createElement("div") as HTMLDivElement;
           activatedLi.setAttribute("id", "activatedLi");
-          if (Number(item.id) % 4 === 0) {
+          if (screen.width > 992 && screen.width < 1200 && Number(item.id) % 3 === 0) {
+            activatedLi.classList.add("endOfARow");
+          } else if (Number(item.id) % 4 === 0) {
             activatedLi.classList.add("endOfARow");
           }
 
